@@ -19,3 +19,9 @@ $(document).ready(function (){
     console.log(MagicEightBall.getAnswer("When will the Skeleton War end?"));
 });
 
+var showPrompt = function show_prompt() {
+    var answer = prompt("Ask Me Anything");
+    $('#questionButton').val(answer);
+}
+
+$('#questionButton').click(showPrompt);
