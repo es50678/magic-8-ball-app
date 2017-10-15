@@ -1,5 +1,4 @@
-$(document).ready(function (){
-    var MagicEightBall = {};
+var MagicEightBall = {};
     MagicEightBall.answerList = 
         [ 
             "It is certain" , 
@@ -11,17 +10,15 @@ $(document).ready(function (){
             "Most likely"
         ];
             
-    MagicEightBall.getAnswer = function(question){
+    MagicEightBall.getAnswer = function(q){
         var randomNumber = Math.floor(Math.random() * this.answerList.length);
         answer = this.answerList[randomNumber];
-        return answer;
+        $("#answer").text(answer);
     };
-    console.log(MagicEightBall.getAnswer("When will the Skeleton War end?"));
-});
 
 var showPrompt = function show_prompt() {
-    var answer = prompt("Ask Me Anything");
-    $('#questionButton').val(answer);
+    var question = prompt("Ask Me Anything");
+    MagicEightBall.getAnswer(question);
 }
 
 $('#questionButton').click(showPrompt);
