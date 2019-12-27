@@ -1,5 +1,4 @@
-$(document).ready(function (){
-    var MagicEightBall = {};
+var MagicEightBall = {};
     MagicEightBall.answerList = 
         [ 
             "It is certain" , 
@@ -11,11 +10,28 @@ $(document).ready(function (){
             "Most likely"
         ];
             
-    MagicEightBall.getAnswer = function(question){
+    MagicEightBall.getAnswer = function(){
+        setTimeout(function(){
+            $("#8ball").attr("src", "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/answerside.png");
+        }, 500);
         var randomNumber = Math.floor(Math.random() * this.answerList.length);
         answer = this.answerList[randomNumber];
-        return answer;
+        setTimeout(function(){
+            $("#8ball").effect("shake");
+        }, 500);
+        $("#answer").text(answer);
+        $("#answer").fadeIn(8000);
+        
     };
-    console.log(MagicEightBall.getAnswer("When will the Skeleton War end?"));
-});
 
+$("#answer").hide();
+var showPrompt = function show_prompt() {
+    $("#answer").hide();
+    $("#8ball").attr("src", "https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2016/09/magic8ballQuestion.png");
+    setTimeout(function(){
+        prompt("ask me a yes or no question");
+    }, 500);
+    MagicEightBall.getAnswer();   
+}
+
+$('#questionButton').click(showPrompt);
